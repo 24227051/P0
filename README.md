@@ -14,7 +14,7 @@ Siga os passos abaixo para configurar o ambiente e executar a aplicação na sua
 
 1. **Clonar o Repositório:**
    ```bash
-   git clone <URL_DO_SEU_REPOSITORIO_GITHUB>
+   git clone https://github.com/24227051/P0.git
    cd meu-resumidor-llm
    ```
 
