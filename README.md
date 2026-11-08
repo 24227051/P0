@@ -67,8 +67,10 @@ Na raiz do projeto, execute:
 ```powershell
 docker build -t app:1.0 .
 docker save -o app.tar app:1.0
+```
 
 Para testar localmente:
 
 ```powershell
 docker run --rm -it --env-file .env app:1.0
+```
