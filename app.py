@@ -31,7 +31,7 @@ def main():
 
     print("\n--- Resumidor de Textos Longos via LLM ---")
     print("Digite ou cole o texto longo que deseja resumir.")
-    print("Digite o texto. Escreva FIM em uma linha separada:")
+    print("Digite FIM em uma linha separada:")
 
     linhas = []
     for linha in sys.stdin:

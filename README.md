@@ -52,8 +52,7 @@ python app.py
 **Como usar:**
 1. Cole ou digite o texto longo diretamente no terminal.
 2. Para enviar o texto para a LLM:
-   * No **Windows**: Pressione `Enter`, depois `Ctrl + Z` e pressione `Enter` novamente.
-   * No **Linux/macOS**: Pressione `Enter`, depois `Ctrl + D`.
+   * Digite FIM em uma linha separada.
 3. Aguarde o processamento e o resumo será exibido na tela.
 
 ### 🐳 Gerando a imagem Docker
