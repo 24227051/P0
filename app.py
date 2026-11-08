@@ -31,14 +31,15 @@ def main():
 
     print("\n--- Resumidor de Textos Longos via LLM ---")
     print("Digite ou cole o texto longo que deseja resumir.")
-    print("Pressione 'Enter' e depois 'Ctrl+D' (Linux/Mac) ou 'Ctrl+Z' (Windows) para finalizar a entrada:\n")
+    print("Digite o texto. Escreva FIM em uma linha separada:")
 
-    # 2. Recebe a entrada textual multi-linha pelo terminal
-    try:
-        user_input = sys.stdin.read().strip()
-    except KeyboardInterrupt:
-        print("\n❌ Operação cancelada pelo usuário.")
-        sys.exit(0)
+    linhas = []
+    for linha in sys.stdin:
+        if linha.rstrip("\r\n") == "FIM":
+            break
+        linhas.append(linha)
+
+    user_input = "".join(linhas).strip()
 
     if not user_input:
         print("⚠️ Nenhum texto foi inserido. Encerrando aplicação.")

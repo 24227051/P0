@@ -55,3 +55,21 @@ python app.py
    * No **Windows**: Pressione `Enter`, depois `Ctrl + Z` e pressione `Enter` novamente.
    * No **Linux/macOS**: Pressione `Enter`, depois `Ctrl + D`.
 3. Aguarde o processamento e o resumo será exibido na tela.
+
+### 🐳 Gerando a imagem Docker
+
+Pré-requisitos:
+
+* Docker Desktop instalado e em execução.
+* Arquivo `Dockerfile` na raiz do projeto.
+
+Na raiz do projeto, execute:
+
+```powershell
+docker build -t app:1.0 .
+docker save -o app.tar app:1.0
+
+Para testar localmente:
+
+```powershell
+docker run --rm -it --env-file .env app:1.0
