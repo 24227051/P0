@@ -1,76 +1,90 @@
-# P0 — Primeiro fluxo com LLM (Resumidor de Textos)
+# P0 — Resumidor de Textos com LLM
 
-Este projeto consiste em uma aplicação em Python executada via terminal que se conecta a um servidor interno do Ollama para resumir textos longos utilizando o modelo de linguagem **qwen3.5:9b-q4_K_M**.
+Aplicação web desenvolvida em Python e Flask para enviar textos a um servidor
+interno do Ollama e exibir o resumo gerado pelo modelo
+`qwen3.5:9b-q4_K_M`.
 
-## 🚀 Como Executar o Projeto
+## Arquitetura
 
-Siga os passos abaixo para configurar o ambiente e executar a aplicação na sua máquina.
+- Flask recebe as requisições HTTP.
+- A rota `/` exibe o formulário web.
+- A rota `/perguntar` envia o texto para a API do Ollama.
+- Gunicorn é utilizado para executar a aplicação em produção.
 
-### 📋 Pré-requisitos
-* Python 3.8 ou superior instalado.
-* Acesso à rede corporativa/institucional para alcançar o endpoint interno da LLM.
+## Pré-requisitos
 
-### 🔧 Configuração e Instalação
+- Python 3.12 ou superior
+- Acesso ao servidor interno do Ollama
+- Docker Desktop
 
-1. **Clonar o Repositório:**
-   ```bash
-   git clone https://github.com/24227051/P0.git
-   cd meu-resumidor-llm
-   ```
+## Execução
 
-2. **Criar e Ativar um Ambiente Virtual (Recomendado):**
-   * no Windows:
-     ```bash
-     python -m venv venv
-     .\venv\Scripts\activate
-     ```
-   * no Linux/macOS:
-     ```bash
-     python3 -m venv venv
-     source venv/bin/activate
-     ```
-
-3. **Instalar as Dependências:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configurar as Variáveis de Ambiente:**
-   Crie um arquivo chamado `.env` na raiz do projeto e adicione a URL do servidor LLM conforme abaixo (troque server_url e port pela URL da LLM interna):
-   ```env
-   OLLAMA_HOST=https://server_url:port
-   ```
-
-### 💻 Executando a Aplicação
-
-Com o ambiente virtual ativo e o arquivo `.env` configurado, execute o script principal:
+### 1. Clonar o repositório
 
 ```bash
-python app.py
+git clone https://github.com/24227051/P0.git
+cd P0
 ```
 
-**Como usar:**
-1. Cole ou digite o texto longo diretamente no terminal.
-2. Para enviar o texto para a LLM:
-   * Digite FIM em uma linha separada.
-3. Aguarde o processamento e o resumo será exibido na tela.
+### 2. Criar e ativar o ambiente virtual
 
-### 🐳 Gerando a imagem Docker
-
-Pré-requisitos:
-
-* Docker Desktop instalado e em execução.
-* Arquivo `Dockerfile` na raiz do projeto.
-
-Na raiz do projeto, execute:
+No Windows:
 
 ```powershell
-docker build -t app:1.0 .
-docker save -o app.tar app:1.0
+python -m venv venv
+.\venv\Scripts\activate
 ```
 
-Para testar localmente:
+No Linux/macOS:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Instalar as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Criar container
+
+- Criar a imagem
 
 ```powershell
-docker run --rm -it --env-file .env app:1.0
+docker build -t p0-resumidor:1.0 .
 ```
+
+- Para gerar um arquivo da imagem:
+
+```powershell
+docker save -o p0-resumidor.tar p0-resumidor:1.0
+```
+
+### 5. Implantar no Devel LLM Portal
+
+Acesse o ambiente de institucional:
+
+- Clique em: Enviar container
+
+- Preencha a Porta do container
+```env
+8080
+```
+
+- Preencha as Variáveis de ambiente
+```env
+OLLAMA_URL=https://llm-internal.softex:9001/api/generate
+```
+
+- Em Arquivo .tar da Imagem Docker, Clique em Escolher Arquivo
+e selecione o arquivo .tar gerado anteriormente
+
+- Clique em: Enviar
+
+### 6. Iniciar a aplicação
+
+- Clique em: Iniciar
+- Clique em: Abrir 8080/tcp
+- Digite o texto no formulário e clique em **Enviar para LLM**.
