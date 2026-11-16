@@ -61,7 +61,7 @@ def perguntar_llm():
             json=payload,
             headers=headers,
             verify=False,  # DESATIVADO APENAS PARA TESTE LOCAL; em produção deve ser True
-            timeout=(5, 360),  # conexão, resposta
+            timeout=(5, 600),  # conexão, resposta
         )
         resposta.raise_for_status()
 

@@ -11,4 +11,4 @@ COPY app.py .
 EXPOSE 8080
 
 # REQUISITO: O processo principal deve escutar em 0.0.0.0 e rodar em primeiro plano
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--timeout", "360", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--timeout", "600", "app:app"]
