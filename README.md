@@ -17,7 +17,7 @@ interno do Ollama e exibir o resumo gerado pelo modelo
 - Acesso ao servidor interno do Ollama
 - Docker Desktop
 
-## Execução
+## Execução no Devel LLM Portal
 
 ### 1. Clonar o repositório
 
@@ -62,7 +62,7 @@ docker build -t p0-resumidor:1.0 .
 docker save -o p0-resumidor.tar p0-resumidor:1.0
 ```
 
-### 5. Implantar no Devel LLM Portal
+### 5. Implantar
 
 Acesse o ambiente de institucional:
 
@@ -87,4 +87,34 @@ e selecione o arquivo .tar gerado anteriormente
 
 - Clique em: Iniciar
 - Clique em: Abrir 8080/tcp
+- Digite o texto no formulário e clique em **Enviar para LLM**.
+
+## Execução local (Opcional)
+
+Requer recursos de processamento e memória
+
+### Instalar o Ollama
+- Subir o Ollama no Docker
+```powershell
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+```
+
+- Baixar o Modelo de Testes Local
+```powershell
+docker exec -it ollama ollama run qwen3.5:9b-q4_K_M
+```
+
+- Ajustar o arquivo .env para Testes Locais
+```env
+OLLAMA_URL=http://host.docker.internal:11434/api/generate
+```
+
+### Repetir os passos de 1 a 4
+
+### Iniciar a aplicação
+```powershell
+docker run --rm -it --env-file .env -p 8080:8080 p0-resumidor:1.0
+```
+
+- Clique em: Abra o browser em http://localhost:8080/
 - Digite o texto no formulário e clique em **Enviar para LLM**.
