@@ -118,3 +118,19 @@ docker run --rm -it --env-file .env -p 8080:8080 p0-resumidor:1.0
 
 - Clique em: Abra o browser em http://localhost:8080/
 - Digite o texto no formulário e clique em **Enviar para LLM**.
+
+## Requisitos
+O README deverá explicar:
+
+problema escolhido;
+usuário ou público;
+justificativa para utilizar um LLM;
+funcionamento da solução;
+limites do projeto;
+instalação;
+configuração do acesso ao LLM escolhido e indicação dos testes reais e simulados;
+execução;
+exemplos de entrada e saída;
+execução dos testes;
+limitações conhecidas;
+link para o vídeo.
