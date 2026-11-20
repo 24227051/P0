@@ -18,10 +18,14 @@ No Avançado foram acrescentados os testes unitários com o objetivo de cumprir 
 - Outra decisão foi o desenvolvimento de testes unitários com o objetivo de cumprir as verificações exigidas;
 
 ## Testes e resultados
-Apresente uma tabela como:
 
-Teste	Entrada ou situação	Resultado esperado	Resultado obtido
-Inclua testes de sucesso e de falha.
+| Teste |	Entrada ou situação	| Resultado esperado |	Resultado obtido |
+| :--- | :--- | :--- | :--- |
+| Texto Vazio | número caracteres = 0 | Aviso usuário | Aviso usuário |
+| Limite Caracteres | número caracteres > 1000 | Aviso usuário | Aviso usuário |
+| Conexão LLM | Fazer Conexão | Conexão OK | Conexão OK |
+| Timeout | Enviar Requisição | Resposta | Falha Timeout |
+
 
 ## Falhas e limitações
 
