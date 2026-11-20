@@ -161,3 +161,4 @@ pytest -v
 - Timeout na resposta da LLM
 
 ## Link para o vídeo
+https://youtu.be/0Zkrh4jSY-s
