@@ -1,23 +1,31 @@
 # P0 — Resumidor de Textos com LLM
 
-Aplicação web desenvolvida em Python e Flask para enviar textos a um servidor
+## Problema escolhido
+Resumidor de Textos com LLM. Aplicação web desenvolvida em Python e Flask para enviar textos a um servidor
 interno do Ollama e exibir o resumo gerado pelo modelo
 `qwen3.5:9b-q4_K_M`.
 
-## Arquitetura
+## Usuário ou público
+Interessados na área de tecnologia com objetivo de interagir com um modelo de LLM
 
+## Justificativa para utilizar um LLM
+A capacidade da LLM de resumir textos. O modelo entende o contexto e escreve as idéias principais. Ao invés de apenas recortar frases soltas do texto original.
+
+## Funcionamento da solução
 - Flask recebe as requisições HTTP.
 - A rota `/` exibe o formulário web.
 - A rota `/perguntar` envia o texto para a API do Ollama.
 - Gunicorn é utilizado para executar a aplicação em produção.
 
 ## Pré-requisitos
-
 - Python 3.12 ou superior
 - Acesso ao servidor interno do Ollama
 - Docker Desktop
 
-## Execução no Devel LLM Portal
+## Limites do projeto
+- O limite do texto para resumo é de 1000 caracteres.
+
+## Implantação e Execução no Devel LLM Portal
 
 ### 1. Clonar o repositório
 
@@ -89,7 +97,7 @@ e selecione o arquivo .tar gerado anteriormente
 - Clique em: Abrir 8080/tcp
 - Digite o texto no formulário e clique em **Enviar para LLM**.
 
-## Execução local (Opcional)
+## Implantação e Execução local (Opcional)
 
 Requer recursos de processamento e memória
 
@@ -119,18 +127,37 @@ docker run --rm -it --env-file .env -p 8080:8080 p0-resumidor:1.0
 - Clique em: Abra o browser em http://localhost:8080/
 - Digite o texto no formulário e clique em **Enviar para LLM**.
 
-## Requisitos
-O README deverá explicar:
+## Configuração dos testes unitários
+- Instalar as dependências de teste (e cobertura de código):
+```bash
+pip install pytest pytest-cov
+```
 
-problema escolhido;
-usuário ou público;
-justificativa para utilizar um LLM;
-funcionamento da solução;
-limites do projeto;
-instalação;
-configuração do acesso ao LLM escolhido e indicação dos testes reais e simulados;
-execução;
-exemplos de entrada e saída;
-execução dos testes;
-limitações conhecidas;
-link para o vídeo.
+## Exemplos de entrada e saída
+Resumo gerado
+
+Texto enviado:
+
+Você é um assistente especializado em síntese de informações. Seu objetivo é resumir o texto fornecido pelo usuário de forma clara, concisa e destacando os pontos principais em português: Segundo a empresa, os novos modelos pertencem à família Mythos, considerada sua geração mais avançada de inteligência artificial. A Anthropic afirma que a tecnologia se destaca em tarefas como engenharia de software, análise de dados, pesquisa científica, visão computacional e resolução de problemas complexos. A companhia também informou que mantém salvaguardas para determinados tipos de solicitações por considerar que modelos dessa categoria podem ser especialmente eficazes na descoberta e exploração de vulnerabilidades em softwares e outras aplicações consideradas sensíveis. Em apresentações anteriores, a empresa destacou ainda o potencial da tecnologia para aplicações científicas. Segundo a Anthropic, modelos da linha Mythos foram capazes de auxiliar pesquisas relacionadas ao desenvolvimento de medicamentos, ao design de proteínas e à formulação de hipóteses em biologia molecular que passaram a ser avaliadas por pesquisadores.
+
+Resposta da LLM:
+
+**Síntese: Novos Modelos de IA Anthropic (Família Mythos)**
+
+*   **Avanço Tecnológico:** A Anthropic lançou novos modelos da família *Mythos*, considerada sua geração mais avançada de inteligência artificial.
+*   **Principais Habilidades:** Excelência em tarefas como engenharia de software, análise de dados, visão computacional e resolução de problemas complexos.
+*   **Segurança e Ética:** A empresa implementou salvaguardas para determinadas solicitações, devido à eficácia dos modelos na descoberta de vulnerabilidades em sistemas sensíveis.
+*   **Impacto Científico:** A tecnologia já auxilia pesquisas práticas, como desenvolvimento de medicamentos, design de proteínas e formulação de hipóteses em biologia molecular.
+
+Fazer outro resumo
+
+## Execução dos testes
+- Executar os testes no terminal
+```bash
+pytest -v
+```
+
+## Limitações conhecidas
+- Timeout na resposta da LLM
+
+## Link para o vídeo
