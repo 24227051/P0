@@ -1,22 +1,21 @@
 # Relatório de Execução
 
-O relatório deverá ser curto e objetivo.
-
 ## Evolução por nível
-Explique brevemente:
 
-o que foi construído no Básico;
-o que foi acrescentado no Intermediário;
-o que foi acrescentado no Avançado.
+### Básico
+No Básico foi construída uma aplicação em Python com o objetivo de receber uma entrada textual, enviar para a LLM e apresentar a resposta recebida ao usuário. Para poder interagir com o Devel LLM Portal a aplicação evoluiu para aplicação web com Flask. 
+
+### Intermediário
+No Intermediário o código foi organizado de forma que as responsabilidades não ficassem misturadas em um único bloco. Ainda nesse nível foi criada uma branch no controle de versão que foi integrada a branch principal por meio de um Pull Request. O código foi preparado para receber testes unitários.
+
+### Avançado
+No Avançado foram acrescentados os testes unitários com o objetivo de cumprir as verificações exigidas e o restante da documentação da aplicação.
 
 ## Decisões principais
-Registre de duas a cinco decisões relevantes.
 
-Para cada decisão, informe:
+- A primeira decisão relevante para o projeto foi a evolução de um código Python para um Python com Flask. A justificativa é poder interagir com a plataforma;
 
-decisão tomada;
-alternativa considerada;
-justificativa.
+- Outra decisão foi o desenvolvimento de testes unitários com o objetivo de cumprir as verificações exigidas;
 
 ## Testes e resultados
 Apresente uma tabela como:
@@ -25,30 +24,14 @@ Teste	Entrada ou situação	Resultado esperado	Resultado obtido
 Inclua testes de sucesso e de falha.
 
 ## Falhas e limitações
-Descreva pelo menos uma dificuldade, falha ou limitação real encontrada.
 
-Explique:
-
-o que aconteceu;
-como foi identificado;
-como foi tratado;
-por que permanece, quando não tiver sido corrigido.
+- A principal falha que foi corrigida foi em relação ao tempo de resposta da LLM. Tanto local quanto no ambiente Devel LLM Portal. Nesse caso aumentou-se o timeout no Dockerfile e no Request para 600 segundos. Também restringiu-se a entrada de texto para 1000 caracteres. Com esses duas modificações consguimos obter a resposta antes do timeout. Caso ocorra o erro, ele é tratado e apresentado ao usuário.
 
 ## Uso de IA no desenvolvimento
-Registre apenas as interações que influenciaram de forma relevante o código, os testes, a documentação ou as decisões.
 
-Informe:
+- Gemini.Usado para tirar dúvidas sobre instalação de ferramentas, bibliotecas, sugerir caminhos de codificação; 
 
-ferramenta utilizada;
-tarefa delegada;
-resultado aproveitado;
-correções ou alterações realizadas;
-forma de verificação.
-Não é necessário reproduzir conversas completas.
+- GitHub Copilot Pro. Usado principalmente dentro da IDE VSCode para corrigir erros;
 
 ## Reflexão final
-Explique brevemente:
-
-principal aprendizado;
-competência mais desenvolvida;
-aspecto que ainda precisa ser aprimorado.
+Foram vários aprendizados, desde a instalação local de um LLM e sua utilização, o desenvolvimento com o uso de containers e da IDE VSCode. Dentre os pontos que precisam ser aprimoradas pode-se citar o aprimoramento da utilização do controle de versão.

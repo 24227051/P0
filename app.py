@@ -61,7 +61,7 @@ def gerar_resumo(texto_usuario: str, ollama_url: str, modelo: str, verify_ssl: b
         json=payload,
         headers=headers,
         verify=verify_ssl,
-        timeout=(5, 360),
+        timeout=(5, 600),
     )
     resposta.raise_for_status()
 
